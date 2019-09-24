@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STM32CubeIDE-TouchGFX-Fix", "STM32CubeIDE-TouchGFX-Fix\STM32CubeIDE-TouchGFX-Fix.csproj", "{1A7B69F4-4589-4B2A-9FAE-660EB1E58389}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A7B69F4-4589-4B2A-9FAE-660EB1E58389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7B69F4-4589-4B2A-9FAE-660EB1E58389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7B69F4-4589-4B2A-9FAE-660EB1E58389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7B69F4-4589-4B2A-9FAE-660EB1E58389}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA67EA8E-AC02-4A7E-A51A-45382E9E64E2}
+	EndGlobalSection
+EndGlobal
