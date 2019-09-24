@@ -30,3 +30,7 @@ or optionally build it / run in Visual Studio.
 ### Notes
 
 It will patch the .cproject XML file to set the appropriate includes/source values required for building with TouchGFX.
+
+### Pre-Build step
+
+You can add this patcher as a pre-build step to your project (Project Properties -> C/C++ Build -> Settings -> Build Steps -> Pre-build steps) however I haven't found a way to get the IDE to refresh the project so you would need to build, refresh the project, then build again :-/
