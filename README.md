@@ -10,7 +10,7 @@ It's a .NET Core application, so if you're building from source:
 
 ### Run a pre-built release
 
-Download the latest release, and run as follows:
+Download the [latest release](https://github.com/replaysMike/STM32CubeIDE-TouchGFX-Fix/releases), and run as follows:
 
 ```ps
 STM32CubeIDE-TouchGFX-Fix -p C:\MyTouchGFXProjectLocation
