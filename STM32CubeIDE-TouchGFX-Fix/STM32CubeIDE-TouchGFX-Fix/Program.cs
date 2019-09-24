@@ -85,23 +85,53 @@ namespace STM32CubeIDE_TouchGFX_Fix
                 .Descendants("sourceEntries").First();
 
             // add TouchGfx/simulator ignore
-            var touchGfx = sourceEntries.Descendants("entry").Where(x => x.Attribute("name").Value == "TouchGFX").FirstOrDefault();
-            if (touchGfx == null)
+            var touchGfxEntries = sourceEntries.Descendants("entry").Where(x => x.Attribute("name").Value == "TouchGFX");
+            if (touchGfxEntries.Count() > 1)
             {
-                touchGfx = new XElement("entry", new XAttribute("flags", "VALUE_WORKSPACE_PATH|RESOLVED"), new XAttribute("kind", "sourcePath"), new XAttribute("name", "TouchGFX"));
-                sourceEntries.Add(touchGfx);
+                // delete extra entries, the IDE is messed up.
+                var entriesToRemove = new List<XElement>();
+                foreach (var entry in touchGfxEntries)
+                {
+                    if (entry.Attributes("excluding").Any())
+                        entriesToRemove.Add(entry);
+                }
+                foreach (var entry in entriesToRemove)
+                    entry.Remove();
+                hasModifications = true;
             }
-            if (!touchGfx.Attributes("excluding").Any())
+            if (!touchGfxEntries.Any())
             {
-                touchGfx.Add(new XAttribute("excluding", "simulator"));
+                sourceEntries.Add(new XElement("entry", new XAttribute("flags", "VALUE_WORKSPACE_PATH|RESOLVED"), new XAttribute("kind", "sourcePath"), new XAttribute("name", "TouchGFX")));
+                hasModifications = true;
+            }
+            if (touchGfxEntries.Any() && !touchGfxEntries.Attributes("excluding").Any())
+            {
+                touchGfxEntries.First().Add(new XAttribute("excluding", "simulator"));
                 hasModifications = true;
             }
 
             // add Middlewares ignores
-            var halSimulator = sourceEntries.Descendants("entry").Where(x => x.Attribute("name").Value == "Middlewares").First();
-            if (!halSimulator.Attributes("excluding").Any())
+            var halSimulatorEntries = sourceEntries.Descendants("entry").Where(x => x.Attribute("name").Value == "Middlewares");
+            if (halSimulatorEntries.Count() > 1)
             {
-                halSimulator.Add(new XAttribute("excluding", "ST/TouchGFX/touchgfx/framework/source/platform/driver/touch/SDL2TouchController.cpp|ST/TouchGFX/touchgfx/framework/source/platform/hal/simulator"));
+                // delete extra entries, the IDE is messed up.
+                var entriesToRemove = new List<XElement>();
+                foreach (var entry in halSimulatorEntries)
+                {
+                    if (entry.Attributes("excluding").Any())
+                        entriesToRemove.Add(entry);
+                }
+                foreach (var entry in entriesToRemove)
+                    entry.Remove();
+            }
+            if (!halSimulatorEntries.Any())
+            {
+                sourceEntries.Add(new XElement("entry", new XAttribute("flags", "VALUE_WORKSPACE_PATH|RESOLVED"), new XAttribute("kind", "sourcePath"), new XAttribute("name", "Middlewares")));
+                hasModifications = true;
+            }
+            if (halSimulatorEntries.Any() && !halSimulatorEntries.Attributes("excluding").Any())
+            {
+                halSimulatorEntries.First().Add(new XAttribute("excluding", "ST/TouchGFX/touchgfx/framework/source/platform/driver/touch/SDL2TouchController.cpp|ST/TouchGFX/touchgfx/framework/source/platform/hal/simulator"));
                 hasModifications = true;
             }
 
