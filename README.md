@@ -30,6 +30,7 @@ or optionally build it / run in Visual Studio.
 ### Notes
 
 It will patch the .cproject XML file to set the appropriate includes/source values required for building with TouchGFX.
+Update Sept 26, 2019: Now also patches ST's broken \_sbrk implementation in FreeRTOS thanks to [Dave Nadler's Newlib/FreeRTOS patch](http://www.nadler.com/embedded/newlibAndFreeRTOS.html)!
 
 ### Pre-Build step
 
