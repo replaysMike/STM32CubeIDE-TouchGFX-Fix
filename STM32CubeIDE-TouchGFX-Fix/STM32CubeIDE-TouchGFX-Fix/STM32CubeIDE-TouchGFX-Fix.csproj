@@ -6,7 +6,18 @@
     <RootNamespace>STM32CubeIDE_TouchGFX_Fix</RootNamespace>
     <Company>Refactor Software</Company>
     <Authors>Michael Brown</Authors>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="EmbeddedData\heap_useNewlib.c" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedData\heap_useNewlib.c" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.6.0" />
